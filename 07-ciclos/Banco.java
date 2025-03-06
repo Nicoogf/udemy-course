@@ -30,9 +30,11 @@ public class Banco {
                     int valorARetirar = consola.nextInt() ;
                     if( valorARetirar > SALDO_INICIAL) {
                         System.out.println("No tienes esa cantidad");
+                    }else{
+                        SALDO_INICIAL -= valorARetirar ;
+                        System.out.println("Con el retiro de direro te quedan : " + SALDO_INICIAL);
                     }
-                    SALDO_INICIAL -= valorARetirar ;
-                    System.out.println("Con el retiro de direro te quedan : " + SALDO_INICIAL);
+
                 }
                 case 3 -> {
                     System.out.println("Tu saldo es de : " + SALDO_INICIAL);
