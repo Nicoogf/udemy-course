@@ -11,5 +11,13 @@ public class Renglones {
         matrizNueva[1][1] = 500 ;
         matrizNueva[1][2] = 600 ;
 
+        System.out.println("El valor de [0][0] : " + matrizNueva[0][0] );
+
+        for ( int renglones = 0 ; renglones < RENGLONES ; renglones ++) {
+            for ( int columnas = 0 ; columnas < COLUMNAS ; columnas ++){
+                System.out.println("[ " + renglones + " ] " +  "[ " + columnas + " ]" + " = " + matrizNueva[renglones][columnas]);
+            }
+        }
+
     }
 }
