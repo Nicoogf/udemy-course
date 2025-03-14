@@ -1,27 +1,24 @@
 public class Persona {
     String nombre ;
     String apellido ;
-    int edad ;
 
-    void MostrarDetalles() {
-        System.out.println("Nombre : " + nombre);
-        System.out.println("Apellido : " + apellido);
-        System.out.println("Edad : " + edad );
+    public Persona (String nombre , String apellido) {
+        this.nombre = nombre ;
+        this.apellido = apellido ;
+        System.out.println("Operador this : " + this );
+    }
+
+    void Saludar() {
+        System.out.println("Hola " + nombre);
     }
 
     public static void main(String[] args) {
-        System.out.println("*** Creacion de Clases y Objetos ***");
-        var objeto1 =  new Persona();
-        objeto1.nombre = "Gabriel" ;
-        objeto1.apellido = "Gonzales" ;
-        objeto1.edad = 45 ;
+        var Gabriel =  new Persona("Gabriel" , "Gonzales") ;
+        var Carlos = new Persona("Carlos" , "Rodriguez") ;
 
-        objeto1.MostrarDetalles();
+        Gabriel.Saludar();
 
-
-        var objeto2 = new Persona() ;
-        objeto2.MostrarDetalles();
+        System.out.println("Direccion de memoria : " +  Gabriel);
+        System.out.println("Direccion de memoria : " +  Carlos);
     }
 }
-
-
