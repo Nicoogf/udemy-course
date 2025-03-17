@@ -7,5 +7,11 @@ public class Testeo {
         var nombre_gonzalo =  gonzalo.getNombre() ;
 
         System.out.println(nombre_gonzalo);
+
+        var newName = "Ricardelo" ;
+
+        gonzalo.setNombre(newName);
+
+        System.out.println( gonzalo.getNombre() );
     }
 }
