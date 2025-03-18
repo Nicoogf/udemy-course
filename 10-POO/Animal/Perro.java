@@ -10,6 +10,13 @@ public class Perro extends Animal {
     @Override
     public void Dormir(){
         System.out.println("El perro duerme zzzz");
+        System.out.println("Metodo padre : ");
+        super.Dormir();
+    }
+
+    @Override
+    public void HacerSonido(){
+        System.out.println("El perro hace guau");
     }
 
 }

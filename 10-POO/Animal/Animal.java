@@ -12,4 +12,8 @@ public class Animal {
         System.out.println("zzzzzzzz");
     }
 
+    public void HacerSonido(){
+        System.out.println("El animal hace un sonido");
+    }
+
  }
