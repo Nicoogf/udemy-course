@@ -2,14 +2,14 @@ import Practica.Persona;
 
 public class MetosoTS {
     public static void main(String[] args) {
-        System.out.println("Cantidad de personas creadas : " + Persona.contadorPersona);
+        System.out.println("Cantidad de personas creadas : " + Persona.getContadorPersona());
 
         var persona_uno = new Persona("Juan" , "Gonzales" , 87 ) ;
         String nombreCompleto = persona_uno.toString();
         System.out.println(nombreCompleto);
         System.out.println(persona_uno);
 
-        System.out.println("Cantidad de personas creadas : " + Persona.contadorPersona);
-
+        System.out.println("Cantidad de personas creadas : " + Persona.getContadorPersona());
+        System.out.println("ID : " + persona_uno.getIdUnico());
     }
 }
