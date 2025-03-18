@@ -1,6 +1,7 @@
 package Practica;
 
 public class Persona {
+    public static int contadorPersona = 0 ;
     private String nombre ;
     private String apellido ;
     private int edad ;
@@ -9,6 +10,7 @@ public class Persona {
         this.nombre = nombre ;
         this.apellido = apellido ;
         this.edad = edad ;
+        Persona.contadorPersona++ ;
     }
 
     public String getNombre() {
@@ -34,4 +36,10 @@ public class Persona {
     public void setEdad ( int edad ) {
         this.edad = edad ;
     }
+
+   @Override
+    public String toString(){
+        return "Nombre : " + this.nombre + " " +  this.apellido + " " + super.toString() ;
+    }
+
 }
