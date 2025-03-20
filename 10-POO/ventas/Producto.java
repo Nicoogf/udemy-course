@@ -8,9 +8,17 @@ public class Producto extends Object{
     private static int contadorProducto ;
 
     public Producto (String nombre , int precio ){
+        this.idProducto = ++Producto.contadorProducto ;
         this.nombre = nombre ;
         this.precio = precio ;
-        this.idProducto = 0 ;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 
     public int getPrecio() {
@@ -21,12 +29,16 @@ public class Producto extends Object{
         this.precio = precio;
     }
 
-
-    public String getNombre() {
-        return nombre;
+    public int getIdProducto() {
+        return this.idProducto;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    @Override
+    public String toString() {
+        return "Producto{" +
+                "idProducto=" + this.idProducto +
+                ", nombre='" + this.nombre + '\'' +
+                ", precio=" +this.precio +
+                '}';
     }
 }
