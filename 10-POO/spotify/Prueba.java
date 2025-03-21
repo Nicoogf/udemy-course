@@ -8,19 +8,12 @@ public class Prueba {
         var thirdSong = new Song("Cuchillos" , "Airbag" , 187) ;
         var fourthSOng = new Song("Campos Eliseos" , "Airbag" , 205) ;
         var fiveSong =  new Song("Volver a casa" , "Airbag" , 211) ;
-        var primerPlaylist = new Playlist("APTHSUT" , new Song[]{fistSong,secondSong,thirdSong,fourthSOng}) ;
+        var primerPlaylist = new Playlist("APTHSUT") ;
 
+        primerPlaylist.MostrarDatos();
 
-        System.out.println(primerPlaylist.toString());
+        primerPlaylist.AgregarCancion(new Song("Club de la pelea" , "Airbag" , 411));
 
-        primerPlaylist.AddSong(fiveSong);
-        primerPlaylist.AddSong(fiveSong);
-        primerPlaylist.AddSong(fiveSong);
-        primerPlaylist.AddSong(fiveSong);
-        primerPlaylist.AddSong(fiveSong);
-        primerPlaylist.AddSong(fiveSong);
-        primerPlaylist.AddSong(fiveSong);
-
-        primerPlaylist.MostrarDetalles() ;
+        primerPlaylist.MostrarDatos();
     }
 }

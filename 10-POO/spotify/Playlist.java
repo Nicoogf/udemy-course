@@ -4,59 +4,38 @@ import java.util.Arrays;
 
 public class Playlist {
 
-    private String nombre ;
-    private static int idPlaylist ;
-    private static int cantidadDeplaylist ;
-    private Song[] listadoDeCanciones ;
-    private int cantidadDeCanciones = 0 ;
-    private final int CANTIDAD_MAXIMA = 5 ;
+    private int idPlaylist ;
+    private String name ;
+    private static int cantidadDeCanciones = 0 ;
+    private Song[] playlistCreada ;
+    private final int CANTIDAD_MAXIMA_CANCIONES = 5 ;
 
-
-    public Playlist( String nombre , Song[] listadoDeCanciones){
-        this.nombre = nombre ;
-        this.listadoDeCanciones = listadoDeCanciones ;
+    public Playlist( String name) {
         this.idPlaylist = idPlaylist++ ;
-        ++cantidadDeplaylist ;
+        this.name = name ;
+        this.playlistCreada = playlistCreada ;
+        this.playlistCreada = new Song[CANTIDAD_MAXIMA_CANCIONES] ;
     }
 
-    public String getNombre() {
-        return nombre;
+    public void MostrarDatos() {
+        System.out.println("Length : " + playlistCreada.length);
+        System.out.println("Playlist : ");
+        for ( int i = 0 ; i < playlistCreada.length ; i++){
+            if( playlistCreada[i] != null) {
+                System.out.println("\t" + i + "-" + playlistCreada[i].getArtist() + " - " + playlistCreada[i].getTitle());
+            } }
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    public void AgregarCancion(Song cancionAgregada) {
+        System.out.println("\t Tiene " + cantidadDeCanciones + " canciones");
+        if( cantidadDeCanciones < CANTIDAD_MAXIMA_CANCIONES) {
+            playlistCreada[cantidadDeCanciones++] = cancionAgregada ;
+            System.out.println(cancionAgregada.getTitle() + " Agregada con exito ") ;
+        }else{
+            System.out.println("Superaste el maximo de canciones");
+        }
     }
 
-    public static int getIdPlaylist() {
-        return idPlaylist;
-    }
 
-    public static int getCantidadDeplaylist() {
-        return cantidadDeplaylist;
-    }
 
-    @Override
-    public String toString() {
-       String resultado = "Playlist \n" ;
-       for( int i = 0 ; i < listadoDeCanciones.length ; i++) {
-           resultado += "\t" + listadoDeCanciones[i].getArtist() + " " + listadoDeCanciones[i].getTitle() + "\n";
-       }
-       return resultado ;
-    }
-
-   public void AddSong( Song songAdd ){
-       if( cantidadDeCanciones >= listadoDeCanciones.length) {
-           System.out.println("Ya alcanzo el maximo");
-       }else{
-           listadoDeCanciones[cantidadDeCanciones++]= songAdd ;
-           System.out.println("Cancion agregada");
-       }
-   }
-
-   public void MostrarDetalles(){
-       System.out.println("Playlist :\n");
-       for( int i = 0 ;  i < listadoDeCanciones.length ; i++) {
-           System.out.println( listadoDeCanciones[i].getArtist() + " - " + listadoDeCanciones[i].getTitle());
-       }
-   }
 }
