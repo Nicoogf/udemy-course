@@ -1,40 +1,62 @@
 package spotify;
 
+import java.util.Arrays;
+
 public class Playlist {
-    private static int contadorListas = 0;
-    private int idList;
-    private String nameList;
-    private Song[] playlist;
-    private int contadorCanciones = 0; // Controla cuántas canciones se han agregado
-    private final int CANCIONES_POR_ALBUM = 5;
 
-    public Playlist(String nameList) {
-        this.idList = ++contadorListas; // Generar ID único para cada playlist
-        this.nameList = nameList;
-        this.playlist = new Song[CANCIONES_POR_ALBUM];
+    private String nombre ;
+    private static int idPlaylist ;
+    private static int cantidadDeplaylist ;
+    private Song[] listadoDeCanciones ;
+    private int cantidadDeCanciones = 0 ;
+    private final int CANTIDAD_MAXIMA = 5 ;
+
+
+    public Playlist( String nombre , Song[] listadoDeCanciones){
+        this.nombre = nombre ;
+        this.listadoDeCanciones = listadoDeCanciones ;
+        this.idPlaylist = idPlaylist++ ;
+        ++cantidadDeplaylist ;
     }
 
-    public void AddSong(Song songAdd) {
-        if (contadorCanciones < CANCIONES_POR_ALBUM) {
-            this.playlist[contadorCanciones++] = songAdd; // Agregar canción y aumentar contador
-            System.out.println("Canción agregada a la playlist: " + nameList);
-            System.out.println("\t-" + songAdd.getTitle());
-            System.out.println("\t-" + songAdd.getArtist());
-            System.out.println("CON ÉXITO");
-        } else {
-            System.out.println("No se pueden agregar más canciones, la playlist está llena.");
-        }
+    public String getNombre() {
+        return nombre;
     }
 
-    public void MostrarListado() {
-        System.out.println("Playlist: " + nameList);
-        if (contadorCanciones == 0) {
-            System.out.println("\tLa playlist está vacía.");
-        } else {
-            for (int i = 0; i < contadorCanciones; i++) { // Solo recorrer canciones agregadas
-                System.out.println("\t" + this.playlist[i].getArtist() + " - " + this.playlist[i].getTitle());
-            }
-        }
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 
+    public static int getIdPlaylist() {
+        return idPlaylist;
+    }
+
+    public static int getCantidadDeplaylist() {
+        return cantidadDeplaylist;
+    }
+
+    @Override
+    public String toString() {
+       String resultado = "Playlist \n" ;
+       for( int i = 0 ; i < listadoDeCanciones.length ; i++) {
+           resultado += "\t" + listadoDeCanciones[i].getArtist() + " " + listadoDeCanciones[i].getTitle() + "\n";
+       }
+       return resultado ;
+    }
+
+   public void AddSong( Song songAdd ){
+       if( cantidadDeCanciones >= listadoDeCanciones.length) {
+           System.out.println("Ya alcanzo el maximo");
+       }else{
+           listadoDeCanciones[cantidadDeCanciones++]= songAdd ;
+           System.out.println("Cancion agregada");
+       }
+   }
+
+   public void MostrarDetalles(){
+       System.out.println("Playlist :\n");
+       for( int i = 0 ;  i < listadoDeCanciones.length ; i++) {
+           System.out.println( listadoDeCanciones[i].getArtist() + " - " + listadoDeCanciones[i].getTitle());
+       }
+   }
 }
