@@ -1,41 +1,41 @@
 package spotify;
-
-import java.util.Arrays;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Playlist {
+    private static int cantidadDeCanciones = 0;
+    private final int CANTIDAD_MAXIMA = 5 ;
 
-    private int idPlaylist ;
     private String name ;
-    private static int cantidadDeCanciones = 0 ;
-    private Song[] playlistCreada ;
-    private final int CANTIDAD_MAXIMA_CANCIONES = 5 ;
+    private int idPlaylist ;
+    private List<Song> listadoDeCanciones ;
 
-    public Playlist( String name) {
-        this.idPlaylist = idPlaylist++ ;
+    public Playlist( String name ) {
         this.name = name ;
-        this.playlistCreada = playlistCreada ;
-        this.playlistCreada = new Song[CANTIDAD_MAXIMA_CANCIONES] ;
+        this.idPlaylist =  cantidadDeCanciones;
+        this.listadoDeCanciones = new ArrayList<Song>() ;
     }
 
-    public void MostrarDatos() {
-        System.out.println("Length : " + playlistCreada.length);
-        System.out.println("Playlist : ");
-        for ( int i = 0 ; i < playlistCreada.length ; i++){
-            if( playlistCreada[i] != null) {
-                System.out.println("\t" + i + "-" + playlistCreada[i].getArtist() + " - " + playlistCreada[i].getTitle());
-            } }
-    }
 
-    public void AgregarCancion(Song cancionAgregada) {
-        System.out.println("\t Tiene " + cantidadDeCanciones + " canciones");
-        if( cantidadDeCanciones < CANTIDAD_MAXIMA_CANCIONES) {
-            playlistCreada[cantidadDeCanciones++] = cancionAgregada ;
-            System.out.println(cancionAgregada.getTitle() + " Agregada con exito ") ;
+    public void AddSong( Song songAdd) {
+        if( this.listadoDeCanciones.size() < CANTIDAD_MAXIMA ) {
+            this.listadoDeCanciones.add(songAdd) ;
+            int posicionEnArreglo = this.listadoDeCanciones.size() - 1 ;
+            songAdd.setIdSong(Integer.toString(posicionEnArreglo));
+            songAdd.setNumeroDeCancion(posicionEnArreglo+1);
+            System.out.println("✅ La canción : " + songAdd.getTitle() + " fue agregada con exito");
         }else{
-            System.out.println("Superaste el maximo de canciones");
+            System.out.println("❌ Superaste el máximo posible");
         }
     }
 
-
-
+    @Override
+    public String toString(){
+        String resultado = "Playlist : " + this.name + "\n";
+        resultado += "\t Contiene : " + cantidadDeCanciones  + " canciones \n" ;
+        for( int i = 0 ; i < listadoDeCanciones.size() ; i++) {
+            resultado += "\t\t" + "(" + listadoDeCanciones.get(i).getIdSong() +")" +" - " + listadoDeCanciones.get(i).getNumeroDeCancion()+" - " + listadoDeCanciones.get(i).getArtist() + " - " + listadoDeCanciones.get(i).getTitle() + "\n";
+        }
+        return resultado ;
+    }
 }

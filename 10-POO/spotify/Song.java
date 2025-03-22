@@ -1,16 +1,18 @@
 package spotify;
 
 public class Song {
-    private int idSong;
+    private String idSong;
+    private int numeroDeCancion ;
     private String title ;
     private String artist ;
     private int duration  ; //En segundos
 
     public Song(String title , String artist , int duration){
-        this.idSong = ++idSong ;
         this.title = title ;
         this.artist = artist ;
         this.duration = duration ;
+        this.idSong= "" ;
+        this.numeroDeCancion = 0 ;
     }
 
     public String getArtist() {
@@ -29,6 +31,14 @@ public class Song {
         this.duration = duration;
     }
 
+    public int getNumeroDeCancion() {
+        return numeroDeCancion;
+    }
+
+    public void setNumeroDeCancion(int numeroDeCancion) {
+        this.numeroDeCancion = numeroDeCancion;
+    }
+
     public String getTitle() {
         return this.title;
     }
@@ -37,7 +47,11 @@ public class Song {
         this.title = title;
     }
 
-    public int getIdSong() {
+    public void setIdSong(String idSong) {
+        this.idSong = "ubi-" + idSong;
+    }
+
+    public String getIdSong() {
         return this.idSong;
     }
 
