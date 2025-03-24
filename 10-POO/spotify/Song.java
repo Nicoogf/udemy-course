@@ -1,67 +1,49 @@
-package spotify;
+package spotify ;
 
 public class Song {
-    private String idSong;
-    private int numeroDeCancion ;
-    private String title ;
+
+    private String name ;
     private String artist ;
-    private int duration  ; //En segundos
-
-    public Song(String title , String artist , int duration){
-        this.title = title ;
-        this.artist = artist ;
-        this.duration = duration ;
-        this.idSong= "" ;
-        this.numeroDeCancion = 0 ;
-    }
-
-    public String getArtist() {
-        return this.artist;
-    }
-
-    public void setArtist(String artist) {
-        this.artist = artist;
-    }
+    private int duration ;
+    private static int songCounter = 0;
 
     public int getDuration() {
-        return this.duration;
+        return duration;
     }
 
     public void setDuration(int duration) {
         this.duration = duration;
     }
 
-    public int getNumeroDeCancion() {
-        return numeroDeCancion;
+    public static int getSongCounter() {
+        return songCounter;
     }
 
-    public void setNumeroDeCancion(int numeroDeCancion) {
-        this.numeroDeCancion = numeroDeCancion;
+    public static void setSongCounter(int songCounter) {
+        Song.songCounter = songCounter;
     }
 
-    public String getTitle() {
-        return this.title;
+    public String getArtist() {
+        return artist;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
+    public void setArtist(String artist) {
+        this.artist = artist;
     }
 
-    public void setIdSong(String idSong) {
-        this.idSong = "ubi-" + idSong;
+    public String getName() {
+        return name;
     }
 
-    public String getIdSong() {
-        return this.idSong;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    @Override
-    public String toString() {
-        return "Song{" +
-                "idSong=" + idSong +
-                ", title='" + title + '\'' +
-                ", artist='" + artist + '\'' +
-                ", duration=" + duration +
-                '}';
+    public Song(String name , String artist , int duration ) {
+        this.name = name ;
+        this.artist = artist ;
+        this.duration = duration ;
+        songCounter ++ ;
     }
+
 }
