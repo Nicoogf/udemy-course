@@ -31,5 +31,9 @@ public class Snacks {
         return snacks ;
     }
 
+    public void getName() {
+        System.out.println(snacks);
+    }
+
 
 }
