@@ -21,7 +21,7 @@ public class Snacks {
     public static void MostrarSnack() {
         var inventarioSnack = "" ;
         for( var snack :  snacks){
-            inventarioSnack += snack.toString() + " \n ";
+            inventarioSnack += snack.toString() + "\n";
         }
         System.out.println("--- Snacks en el inventario ---");
         System.out.println(inventarioSnack);
