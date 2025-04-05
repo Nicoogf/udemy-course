@@ -46,6 +46,12 @@ public class MaquinaSnacks {
         switch ( opcion ) {
             case 1 -> comprarSnack(consola, productos) ;
             case 2 -> mostrarTicket(productos) ;
+            case 3 -> agregarSnack(consola) ;
+            case 4 ->{
+                System.out.println("Regresa pronto");
+                salir = true ;
+            }
+            default -> System.out.println("Opcion invalida " + opcion );
         }
         return salir ;
 
@@ -80,6 +86,16 @@ public class MaquinaSnacks {
         }
         ticket += "\n total -> $" + total ;
         System.out.println(ticket);
+    }
+
+    private static void agregarSnack(Scanner consola) {
+        System.out.println("Nombre del snack : ");
+        var nombre = consola.nextLine() ;
+        System.out.println("Precio : ");
+        var precio = Double.parseDouble(consola.nextLine()) ;
+        Snacks.agregarSnack( new Snack(nombre, precio) );
+        System.out.println("Tu snack se agrego correctamente3");
+        Snacks.MostrarSnack();
     }
 }
 
