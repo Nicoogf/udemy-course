@@ -2,3 +2,6 @@ primeras
 lineas
 del
 archivo
+""
+Nuevo contenido 
+En el archivo
