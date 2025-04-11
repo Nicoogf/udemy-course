@@ -87,7 +87,10 @@ public class Album {
 
 package dominio ;
 
+import org.w3c.dom.ls.LSOutput;
+
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.UUID;
 
@@ -129,7 +132,7 @@ public class Album {
     }
 
     public List<Cancion> getListaDeCanciones() {
-        return listaDeCanciones;
+        return Collections.unmodifiableList(this.listaDeCanciones);
     }
 
     public void setListaDeCanciones(List<Cancion> listaDeCanciones) {
@@ -159,4 +162,25 @@ public class Album {
         }
         System.out.println(detallesAlbum);
     }
+
+    public void agregarCancionDirectamente( Cancion cancionAgregada ) {
+        this.listaDeCanciones.add(cancionAgregada) ;
+        StringBuilder respuestaConsola = new StringBuilder() ;
+        respuestaConsola.append("Agregaste ")
+                        .append(cancionAgregada.getNombre())
+                        .append(" con exito");
+        System.out.println(respuestaConsola );
+    }
+
+    public void EliminarCancion( int idCancion ) {
+        List nuevaLista = new ArrayList<Cancion>() ;
+        for ( Cancion c : this.listaDeCanciones) {
+            if( c.getIdCancion() != idCancion ){
+                nuevaLista.add(c);
+            }
+        }
+        this.listaDeCanciones = nuevaLista;
+        System.out.println("Se elimino cancion con id : " + idCancion);
+    }
+
 }
