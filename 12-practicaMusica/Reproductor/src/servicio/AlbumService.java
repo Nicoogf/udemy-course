@@ -22,7 +22,7 @@ public class AlbumService {
         for (Cancion c : album.getListaDeCanciones()) {
             if (c.getIdCancion() == cancionID) {
                 album.EliminarCancion(c.getIdCancion());
-                System.out.println("Se elimino cancion con el id " + cancionID);
+                System.out.println("Se elimino cancion con el id : " + cancionID);
             }
         }
     }
