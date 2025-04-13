@@ -1,98 +1,7 @@
-/* package dominio;
-
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.UUID;
-
-public class Album {
-    private List<Cancion> listadoDeCanciones ;
-    private String nombre ;
-    private String artista ;
-    private final String uuidAlbum = UUID.randomUUID().toString() ;
-    private int idAlbum ;
-    private static int contadorAlbumes = 0 ;
-
-    public Album (String nombre , String artista ){
-        this.listadoDeCanciones = new ArrayList<>() ;
-        this.nombre = nombre ;
-        this.artista = artista ;
-        this.idAlbum = ++contadorAlbumes ;
-    }
-
-    public void addSong( Cancion cancionCreada ) {
-        if (cancionCreada == null) {
-            throw new IllegalArgumentException("No se puede agregar una canción nula.");
-        }
-        this.listadoDeCanciones.add(cancionCreada) ;
-        System.out.println("Se agrego " + cancionCreada.getNombre() + " con exito");
-    }
-
-    public void mostrarListadoDeCanciones(){
-      StringBuilder resultado = new StringBuilder() ;
-      for ( Cancion c : listadoDeCanciones) {
-          resultado.append(c.getIdCancion())
-                    .append(") ")
-                    .append(c.getArtista())
-                    .append(" - ")
-                    .append(c.getNombre())
-                    .append("\n");
-
-      }
-        System.out.println(resultado);
-    }
-
-    public String getNombre() {
-        return nombre;
-    }
-
-    public int getIdAlbum() {
-        return idAlbum;
-    }
-
-    public static int getContadorAlbumes() {
-        return contadorAlbumes;
-    }
-
-    public String getUuidAlbum() {
-        return uuidAlbum;
-    }
-
-    public String getArtista() {
-        return artista;
-    }
-
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-
-    public void setArtista(String artista) {
-        this.artista = artista;
-    }
-
-    @Override
-    public String toString() {
-        return "Album{" +
-                "nombre='" + nombre + '\'' +
-                ", artista='" + artista + '\'' +
-                ", uuidAlbum='" + uuidAlbum + '\'' +
-                ", idAlbum=" + idAlbum +
-                '}';
-    }
-
-    public List<Cancion> getListadoDeCanciones() {
-        return Collections.unmodifiableList(this.listadoDeCanciones);
-    }
-} */
 
 package dominio ;
 
-import org.w3c.dom.ls.LSOutput;
-
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.UUID;
+import java.util.*;
 
 public class Album {
     private String nombre ;
@@ -163,24 +72,25 @@ public class Album {
         System.out.println(detallesAlbum);
     }
 
-    public void agregarCancionDirectamente( Cancion cancionAgregada ) {
+    public void agregarCancion( Cancion cancionAgregada ) {
         this.listaDeCanciones.add(cancionAgregada) ;
-        StringBuilder respuestaConsola = new StringBuilder() ;
-        respuestaConsola.append("Agregaste ")
-                        .append(cancionAgregada.getNombre())
-                        .append(" con exito");
-        System.out.println(respuestaConsola );
     }
 
-    public void EliminarCancion( int idCancion ) {
-        List nuevaLista = new ArrayList<Cancion>() ;
-        for ( Cancion c : this.listaDeCanciones) {
-            if( c.getIdCancion() != idCancion ){
-                nuevaLista.add(c);
+    public void eliminarCancion(int idSongInt) {
+        int cantidadAntes = this.listaDeCanciones.size() ;
+
+        Iterator<Cancion> iterator = this.listaDeCanciones.iterator();
+        while (iterator.hasNext()) {
+            Cancion c = iterator.next();
+            if (c.getIdCancion() == idSongInt) {
+                iterator.remove();
             }
         }
-        this.listaDeCanciones = nuevaLista;
-        System.out.println("Se elimino cancion con id : " + idCancion);
+
+        int cantidadDespues = this.listaDeCanciones.size();
+
+        System.out.println("El álbum tenía: " + cantidadAntes);
+        System.out.println("Y ahora tiene: " + cantidadDespues);
     }
 
 }
