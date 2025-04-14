@@ -61,7 +61,7 @@ public class Album {
     }
 
     public void MostrarListado() {
-        StringBuilder detallesAlbum = new StringBuilder() ;
+        StringBuilder detallesAlbum = new StringBuilder("Hola") ;
         for( Cancion c : listaDeCanciones) {
             detallesAlbum.append(c.getIdCancion())
                     .append(")")
@@ -76,21 +76,14 @@ public class Album {
         this.listaDeCanciones.add(cancionAgregada) ;
     }
 
-    public void eliminarCancion(int idSongInt) {
-        int cantidadAntes = this.listaDeCanciones.size() ;
-
-        Iterator<Cancion> iterator = this.listaDeCanciones.iterator();
-        while (iterator.hasNext()) {
-            Cancion c = iterator.next();
-            if (c.getIdCancion() == idSongInt) {
-                iterator.remove();
+    public void EliminarCancion( int idSong ){
+        Iterator<Cancion> listado = this.listaDeCanciones.iterator() ;
+        while(listado.hasNext() ) {
+            Cancion c = listado.next() ;
+            if( c.getIdCancion() == idSong) {
+                listado.remove();
             }
         }
-
-        int cantidadDespues = this.listaDeCanciones.size();
-
-        System.out.println("El álbum tenía: " + cantidadAntes);
-        System.out.println("Y ahora tiene: " + cantidadDespues);
     }
 
 }
