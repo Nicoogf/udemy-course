@@ -20,7 +20,7 @@ public class Main {
        clubDeLaPelea.EliminarCancion(kamikaze.getIdCancion());
 
 
-        System.out.println("El album actualmente ");
+        System.out.println("El album actualmente : ");
 
         for (Cancion c : clubDeLaPelea.getListaDeCanciones() ) {
             System.out.println( c.getIdCancion() + "-" + c.getNombre());
