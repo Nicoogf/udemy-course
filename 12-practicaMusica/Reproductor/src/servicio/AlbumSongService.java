@@ -3,6 +3,7 @@ package servicio;
 import dominio.AlbumClass;
 import dominio.SongClass;
 
+import java.util.ArrayList;
 import java.util.Iterator;
 
 public class AlbumSongService {
@@ -50,6 +51,26 @@ public class AlbumSongService {
         for( SongClass c : albumRecibido.getListSongs() ){
             System.out.println( countSong + ") " + c.getArtistSong() + " - " + c.getNameSong() );
             countSong++;
+        }
+    }
+
+    public void buscarNombreParcial(AlbumClass album , String palabraRecibida ){
+        ArrayList<SongClass> cancionesEncontradas = new ArrayList<SongClass>() ;
+        int cantidadDeCanciones = 0 ;
+        for( SongClass c : album.getListSongs()) {
+            if(c.getNameSong().toLowerCase().contains(palabraRecibida.toLowerCase())){
+                cancionesEncontradas.add(c) ;
+                cantidadDeCanciones++ ;
+            }
+        }
+
+        if(cantidadDeCanciones == 0){
+            System.out.println("No se encontraron coincidencias");
+        }else{
+            System.out.println("Se encontraron los siguientes temas");
+            for( SongClass c : cancionesEncontradas ){
+                System.out.println(cantidadDeCanciones + ") " +c.getArtistSong() + "-" + c.getNameSong());
+            }
         }
     }
 }
