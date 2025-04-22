@@ -11,7 +11,7 @@ public class MoviesColection {
 
     public MoviesColection( String name ) {
         if( name.isBlank() || name == null) {
-            throw new IllegalArgumentException("Null / / empty fields are not allowed") ;
+            throw new IllegalArgumentException("Null / / empty fields are not allowedd") ;
         }
         this.nameColection = name ;
         this.listMovies = new ArrayList<Movie>() ;
